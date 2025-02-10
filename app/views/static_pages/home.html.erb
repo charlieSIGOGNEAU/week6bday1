@@ -5,8 +5,8 @@
 <ul>
   <% @gossips.each do |gossip| %>
     <li>
-      <strong><%= gossip.user.first_name %></strong> : <%= gossip.title %>
-      
+      <%= link_to gossip.user.first_name, user_path(gossip.user.id) %> : <%= link_to gossip.title, gossip_path(gossip.id) %> 
+
     </li>
   <% end %>
 </ul>
