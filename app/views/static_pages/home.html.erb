@@ -1,0 +1,12 @@
+<h1>Bienvenue sur notre site de potins !</h1>
+
+<h2>Les derniers potins :</h2>
+
+<ul>
+  <% @gossips.each do |gossip| %>
+    <li>
+      <strong><%= gossip.user.first_name %></strong> : <%= gossip.title %>
+      
+    </li>
+  <% end %>
+</ul>

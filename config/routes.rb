@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'welcome/:first_name', to: 'static_pages#welcome'
+  get 'gossip/:id', to: 'static_pages#gossip', as: 'gossip'
+  get 'user/:id', to: 'static_pages#user', as: 'user'
+
   get 'team', to: 'static_pages#team'
   get 'contact', to: 'static_pages#contact'
+  root 'static_pages#home'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
