@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'team', to: 'static_pages#team'
   get 'contact', to: 'static_pages#contact'
   root 'static_pages#home'
+  resources :gossips, only: [:new, :create]
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

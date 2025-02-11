@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <title>YourAppName</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+
     <title><%= content_for(:title) || "The Gossip Project" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,6 +33,13 @@
   </head>
 
   <body>
+
+  <% if notice %>
+  <div class="alert alert-success">
+  <%= notice %>
+  </div>
+  <% end %>
+
     <header>
       <a href="<%= team_path %>">Équipe</a>
       <a href="<%= contact_path %>">Contact</a>
