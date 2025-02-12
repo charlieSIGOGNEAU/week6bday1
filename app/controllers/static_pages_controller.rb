@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
+
+  
   def home
     @gossips = Gossip.all 
   end
@@ -28,7 +30,6 @@ class StaticPagesController < ApplicationController
   @last_name = @user.last_name
   @city = @user.city.name
   @age = @user.age
-
   end
 
 end

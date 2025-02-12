@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+
+
   get 'welcome/:first_name', to: 'static_pages#welcome'
-  get 'gossip/:id', to: 'static_pages#gossip', as: 'gossip'
-  get 'user/:id', to: 'static_pages#user', as: 'user'
+ 
 
   get 'team', to: 'static_pages#team'
   get 'contact', to: 'static_pages#contact'
-  root 'static_pages#home'
-  resources :gossips, only: [:new, :create]
+
+  resources :gossips, only: [:new, :create, :show, :index, :edit, :update]
+  resources :cities, only: [:show]
+  resources :users, only: [:show]
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

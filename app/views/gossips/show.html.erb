@@ -1,0 +1,8 @@
+<h1> <%= @title %> </h1>
+<p> <%= @content %> </p>
+<p> Gossip de <%= link_to "#{@author_first_name} #{@author_last_name}", user_path(@user_id) %>
+qui habitte à : <%= @city %>  </p>
+<%= link_to 'Modifier le Gossip', edit_gossip_path(@gossip), class: "btn-warning" %>
+
+<p> <%= @gossip.class.name %> </p>
+

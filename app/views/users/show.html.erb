@@ -1,0 +1,10 @@
+<h1> information de l'utilisateur </h1>
+<ul>
+  <li> mom : <%= @first_name%> </li>
+  <li> prénom : <%= @last_name%> </li>
+  <li> description : <%= @description%> </li>
+  <li> mail : <%= @email%> </li>
+  <li> age : <%= @age%> </li>
+  <li> ville :  <%= link_to "#{@city}", city_path(@city_id) %> </li>
+
+</ul>

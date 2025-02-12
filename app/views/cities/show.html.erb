@@ -1,0 +1,8 @@
+<p>La ville de <%= @name %> <br> liste de toute les gossipe de la vile: </p>
+
+<p> <% @gossips.each do |gossip| %>
+  <li>
+    <%= link_to gossip.title, gossip_path(gossip.id) %>
+  </li>
+<% end %>
+
