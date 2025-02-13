@@ -2,15 +2,18 @@
 <p> <%= @content %> </p>
 <p> Gossip de <%= link_to "#{@author_first_name} #{@author_last_name}", user_path(@user_id) %>
 qui habitte à : <%= @city %>  </p>
-<%= link_to 'Modifier le Gossip', edit_gossip_path(@gossip), class: "btn-warning" %>
 
-<%= form_with(model: @gossip, method: :delete, data: { confirm: "Es-tu sûr ?" }) do |form| %>
-  <%= form.submit 'Supprimer', class: "btn-warning" %>
+
+<% if session[:user_id] == @user_id %>
+  <%= link_to 'Modifier le Gossip', edit_gossip_path(@gossip), class: "btn-warning" %>
+  <%= form_with(model: @gossip, method: :delete, data: { confirm: "Es-tu sûr ?" }) do |form| %>
+    <%= form.submit 'Supprimer', class: "btn-warning" %>
+  <% end %>
 <% end %>
 
 
-<h2>Commentaires</h2>
+<h2>Commentaires ...</h2>
 
-<p> <%= @gossip.comments.find(1).content %> </p>
+
 
 

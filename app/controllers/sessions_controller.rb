@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+
+
   def new
   end
 
@@ -12,9 +14,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to gossips_path, notice: "Connexion réussie !" # redirige où tu veux, avec un flash ou pas
     else
-      puts "#"*60
       flash[:alert] = "Email ou mot de passe invalide"
-      puts flash[:alert]
       redirect_to new_session_path    
     end
   end

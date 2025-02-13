@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
+
   def new
     @gossip = Gossip.new
   end
@@ -20,7 +23,7 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = User.find(1)  # Assigner l'utilisateur avec ID 1 au potin
+    @gossip.user = User.find(session[:user_id])  # Assigner l'utilisateur avec ID 1 au potin
 
 
     if @gossip.save
@@ -58,4 +61,17 @@ class GossipsController < ApplicationController
   def gossip_params
     params.require(:gossip).permit(:title, :content)
   end
+
+  def authenticate_user
+    puts "#"*60
+    puts 
+    if session[:user_id] == nil
+    redirect_to gossips_path, notice: "veillez vous conecter ou vous inscrir."
+    end
+    if session[:user_id] != Gossip.find(params[:id]).user.id
+    redirect_to gossips_path, notice: "vous n'etes pas autorisé a faire cette requette."
+    end
+
+  end
+
 end
