@@ -1,3 +1,24 @@
 <h1>Modifier le potin</h1>
 
-<p> <%= @gossip.class.name %> </p>
+<%= form_with model: @gossip, local: true do |form| %>
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Il y a des erreurs :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.label :title, "Titre du potin :" %>
+    <%= form.text_field :title, class: "form-control" %>
+
+    <%= form.label :content, "Contenu du potin :" %>
+    <%= form.text_area :content, class: "form-control" %>
+
+  <div>
+    <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+  </div>
+<% end %>

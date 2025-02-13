@@ -4,5 +4,13 @@
 qui habitte à : <%= @city %>  </p>
 <%= link_to 'Modifier le Gossip', edit_gossip_path(@gossip), class: "btn-warning" %>
 
-<p> <%= @gossip.class.name %> </p>
+<%= form_with(model: @gossip, method: :delete, data: { confirm: "Es-tu sûr ?" }) do |form| %>
+  <%= form.submit 'Supprimer', class: "btn-warning" %>
+<% end %>
+
+
+<h2>Commentaires</h2>
+
+<p> <%= @gossip.comments.find(1).content %> </p>
+
 
