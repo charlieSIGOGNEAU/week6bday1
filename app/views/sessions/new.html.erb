@@ -1,0 +1,21 @@
+<h2>Connexion</h2>
+
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+
+<%= form_with url: sessions_path, method: :post do |formulaire| %>
+  <div>
+    <%= formulaire.label :email %>
+    <%= formulaire.email_field :email %>
+  </div>
+  <div>
+    <%= formulaire.label :password %>
+    <%= formulaire.password_field :password %>
+  </div>
+  <%= formulaire.submit "Se connecter" %>
+<% end %>

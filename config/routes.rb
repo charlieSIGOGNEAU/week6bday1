@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
   
   resources :cities, only: [:show]
-  resources :users, only: [:show]
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
+  
+
+
 
 
 

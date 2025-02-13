@@ -1,0 +1,42 @@
+<h1> Page d inscription</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+
+  <% if @user.errors.any? %> 
+    <div class="alert alert-danger">
+      <p>Nous n'avons pas réussi à créer votre profil pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+  <%= form.label :first_name, "Votre nom:" %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :last_name, "Votre prénom:" %>
+  <%= form.text_field :last_name %>
+
+  <%= form.label :description, "Votre description:" %>
+  <%= form.text_field :description %>
+    
+  <%= form.label :email, "Votre mail:" %>
+  <%= form.text_field :email %>
+
+  <%= form.label :age, "Votre age:" %>
+  <%= form.text_field :age %>
+
+  <%= form.label :password, "Votre password:" %>
+  <%= form.text_field :password %>
+
+  <%= form.label :password_confirmation, "Votre password:" %>
+  <%= form.text_field :password_confirmation %>
+
+  <%= form.label :city_id, "Ville" %>
+  <%= form.collection_select :city_id, City.all, :id, :name, prompt: "Choisir une ville" %>
+
+  <%= form.submit "Créer" %>
+<% end %>
+

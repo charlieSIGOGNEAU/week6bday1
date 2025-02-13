@@ -30,6 +30,8 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
+
   </head>
 
   <body>
@@ -43,6 +45,19 @@
     <header>
       <a href="<%= team_path %>">Équipe</a>
       <a href="<%= contact_path %>">Contact</a>
+      
+
+      <% if session[:user_id] %>
+        <%= form_with(url: session_path(session[:user_id]), method: :delete, local: true) do %>
+          <%= submit_tag "Se déconnecter" %>
+        <% end %>
+      <% else %>
+        <a href="<%= new_user_path %>"> inscription</a>
+
+      <% end %>
+
+
+
     </header>
     <%= yield %>
   </body>

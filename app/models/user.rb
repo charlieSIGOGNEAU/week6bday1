@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }, if: :password
+  validates :password_confirmation, presence: true, if: :password_confirmation
+  validates :password, confirmation: true
+  validates :email, presence: true, uniqueness: true
+  
   belongs_to :city
   has_many :gossips
   has_many :comments
