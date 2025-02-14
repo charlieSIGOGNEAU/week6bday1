@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id # Auto-login après inscription
+      log_in(@user) # Auto-login après inscription
       redirect_to gossips_path, notice: "Compte créé et connecté !"
     else
       render :new, status: :unprocessable_entity

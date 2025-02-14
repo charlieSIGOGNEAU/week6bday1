@@ -17,6 +17,7 @@ class GossipsController < ApplicationController
     @city = @gossip.user.city.name
     @author_first_name = @gossip.user.first_name
     @author_last_name = @gossip.user.last_name
+    @user = @gossip.user
     @user_id = @gossip.user.id
     @created =@gossip.created_at
   end
@@ -65,10 +66,10 @@ class GossipsController < ApplicationController
   def authenticate_user
     puts "#"*60
     puts 
-    if session[:user_id] == nil
+    if current_user == nil
     redirect_to gossips_path, notice: "veillez vous conecter ou vous inscrir."
     end
-    if session[:user_id] != Gossip.find(params[:id]).user.id
+    if current_user != Gossip.find(params[:id]).user
     redirect_to gossips_path, notice: "vous n'etes pas autorisé a faire cette requette."
     end
 

@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
-
-
+  
   def new
   end
 
@@ -11,7 +9,8 @@ class SessionsController < ApplicationController
   
     # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user) #on devrais le suprimé car doublon avec remember
+      remember(user)
       redirect_to gossips_path, notice: "Connexion réussie !" # redirige où tu veux, avec un flash ou pas
     else
       flash[:alert] = "Email ou mot de passe invalide"

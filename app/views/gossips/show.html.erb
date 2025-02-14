@@ -4,7 +4,7 @@
 qui habitte à : <%= @city %>  </p>
 
 
-<% if session[:user_id] == @user_id %>
+<% if current_user== @user %>
   <%= link_to 'Modifier le Gossip', edit_gossip_path(@gossip), class: "btn-warning" %>
   <%= form_with(model: @gossip, method: :delete, data: { confirm: "Es-tu sûr ?" }) do |form| %>
     <%= form.submit 'Supprimer', class: "btn-warning" %>
